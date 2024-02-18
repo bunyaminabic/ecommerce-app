@@ -13,7 +13,7 @@ function Card() {
           <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight">
             Macbook Pro
           </Box>
-          <Box>100 TL</Box>
+          <Box>200 TL</Box>
         </Box>
       </Link>
 
