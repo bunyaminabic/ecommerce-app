@@ -1,19 +1,24 @@
 import { Box, Image, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-function Card() {
+function Card({ item }) {
   return (
     <Box borderWidth="1px" borderRadius="lg" overflow="hidden" p="3">
       <Link to="#/">
-        <Image src="https://picsum.photos/400/200" alt="product" />
+        <Image
+          style={{ width: "300px", height: "200px" }}
+          src={item.image}
+          alt="product"
+          loading="lazy"
+        />
         <Box p="6">
           <Box d="plex" alignItems="baseline">
-            12/12/2024
+            {item?.rating.rate}
           </Box>
           <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight">
-            Macbook Pro
+            {item?.title}
           </Box>
-          <Box>200 TL</Box>
+          <Box>{item?.price} TL</Box>
         </Box>
       </Link>
 
