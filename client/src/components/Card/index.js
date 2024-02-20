@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Card({ item }) {
   return (
     <Box borderWidth="1px" borderRadius="lg" overflow="hidden" p="3">
-      <Link to="#/">
+      <Link to={`/product/${item.id}`}>
         <Image
           style={{ width: "300px", height: "200px" }}
           src={item.image}
