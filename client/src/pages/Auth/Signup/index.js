@@ -12,8 +12,11 @@ import {
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase";
 import validations from "./validations";
+import { useAuht } from "../../../contexts/AuthContext";
 
 function Signup() {
+  const { login } = useAuht();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -26,13 +29,14 @@ function Signup() {
       try {
         await validations.validate({ email, password, passwordConfirm });
         await createUserWithEmailAndPassword(auth, email, password);
+        login({ user: { email } });
         alert("Kaydınız başarıyla tamamlandı!");
       } catch (error) {
         setError(error.message);
         setInputError({ [error.path]: true });
       }
     },
-    [email, password, passwordConfirm]
+    [email, password, passwordConfirm, login]
   );
 
   const handleInputChange = useCallback(
