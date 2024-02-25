@@ -28,7 +28,12 @@ function Signup() {
       e.preventDefault();
       try {
         await validations.validate({ email, password, passwordConfirm });
-        await createUserWithEmailAndPassword(auth, email, password);
+        await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password,
+          passwordConfirm
+        );
         login({ user: { email } });
         alert("Kaydınız başarıyla tamamlandı!");
       } catch (error) {
