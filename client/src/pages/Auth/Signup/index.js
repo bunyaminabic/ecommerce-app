@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   Flex,
   Box,
@@ -22,6 +22,27 @@ function Signup() {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [error, setError] = useState("");
   const [inputError, setInputError] = useState({});
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (userLoggedIn) {
+      console.log("Kullanıcı kaydoldu:", email);
+      fetchUserData();
+    }
+  }, [userLoggedIn, email]);
+
+  const fetchUserData = async () => {
+    try {
+      const user = auth.currentUser;
+      if (user) {
+        const uid = user.uid;
+        const email = user.email;
+        console.log("Kullanıcı bilgileri:", [{ uid, email }]);
+      }
+    } catch (error) {
+      console.error("Kullanıcı bilgileri alınırken bir hata oluştu:", error);
+    }
+  };
 
   const handleSubmit = useCallback(
     async (e) => {
@@ -36,6 +57,7 @@ function Signup() {
         );
         login({ user: { email } });
         alert("Kaydınız başarıyla tamamlandı!");
+        setUserLoggedIn(true);
       } catch (error) {
         setError(error.message);
         setInputError({ [error.path]: true });
