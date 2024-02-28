@@ -2,9 +2,9 @@ import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 import { Button } from "@chakra-ui/react";
 
-import { useAuht } from "../../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 function Navbar() {
-  const { loggedIn } = useAuht();
+  const { loggedIn } = useAuth();
 
   console.log(loggedIn);
   return (

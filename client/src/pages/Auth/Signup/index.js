@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Flex,
   Box,
@@ -12,10 +13,11 @@ import {
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase";
 import validations from "./validations";
-import { useAuht } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../contexts/AuthContext";
 
 function Signup() {
-  const { login } = useAuht();
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,6 +60,7 @@ function Signup() {
         login({ user: { email } });
         alert("Kaydınız başarıyla tamamlandı!");
         setUserLoggedIn(true);
+        navigate("/profile");
       } catch (error) {
         setError(error.message);
         setInputError({ [error.path]: true });
