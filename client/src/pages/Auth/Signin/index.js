@@ -53,7 +53,7 @@ function Signin() {
         await validations.validate({ email, password });
         await signInWithEmailAndPassword(auth, email, password);
         login({ user: { email } });
-        alert("Kullanıcı giriş yaptı:");
+
         setUserLoggedIn(true);
         navigate("/profile");
       } catch (error) {

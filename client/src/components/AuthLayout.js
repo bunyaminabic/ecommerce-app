@@ -1,9 +1,15 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { isLoggedIn } from "./MainLayout";
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase";
 const AuthLayout = () => {
-  if (isLoggedIn) {
-    return <Navigate to="/signin" />;
+  const [user, isloading] = useAuthState(auth);
+
+  if (isloading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (user) {
+    return <Navigate to="/" />;
   }
   return <Outlet />;
 };

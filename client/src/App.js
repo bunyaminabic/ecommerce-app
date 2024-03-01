@@ -16,13 +16,13 @@ function App() {
 
         <div id="content">
           <Routes>
+            <Route path="/" exact element={<Products />} />
+            <Route
+              path="/product/:product_id"
+              exact
+              element={<ProductDetail />}
+            />
             <Route path="/" element={<AuthLayout />}>
-              <Route path="/" exact element={<Products />} />
-              <Route
-                path="/product/:product_id"
-                exact
-                element={<ProductDetail />}
-              />
               <Route path="/signin" element={<Signin />} />
               <Route path="/signup" element={<Signup />} />
             </Route>

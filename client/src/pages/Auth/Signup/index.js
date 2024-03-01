@@ -58,7 +58,7 @@ function Signup() {
           passwordConfirm
         );
         login({ user: { email } });
-        alert("Kaydınız başarıyla tamamlandı!");
+
         setUserLoggedIn(true);
         navigate("/profile");
       } catch (error) {
