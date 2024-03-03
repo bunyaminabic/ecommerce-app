@@ -8,6 +8,7 @@ import Signup from "./pages/Auth/Signup";
 import Profile from "./pages/Profile";
 import MainLayout from "./components/MainLayout";
 import AuthLayout from "./components/AuthLayout";
+import Basket from "./pages/Basket";
 function App() {
   return (
     <Router>
@@ -29,6 +30,7 @@ function App() {
 
             <Route path="/" element={<MainLayout />}>
               <Route path="/profile" element={<Profile />} />
+              <Route path="/basket" element={<Basket />} />
             </Route>
           </Routes>
         </div>
