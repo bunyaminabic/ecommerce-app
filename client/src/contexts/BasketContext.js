@@ -9,7 +9,14 @@ const BasketProvider = ({ children }) => {
     if (!findBasketItem) {
       return setItems((items) => [data, ...items]);
     }
-    const filtered = items.filter((item) => item._id !== findBasketItem._id);
+    const filtered = items.filter(
+      (item) => item.id.toString() !== findBasketItem.id.toString()
+    );
+    setItems(filtered);
+  };
+
+  const removeFromBasket = (itemId) => {
+    const filtered = items.filter((item) => item.id.toString() !== itemId);
     setItems(filtered);
   };
 
@@ -17,6 +24,7 @@ const BasketProvider = ({ children }) => {
     items,
     setItems,
     addToBasket,
+    removeFromBasket,
   };
 
   return (
