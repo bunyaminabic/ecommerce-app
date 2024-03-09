@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import MainLayout from "./components/MainLayout";
 import AuthLayout from "./components/AuthLayout";
 import Basket from "./pages/Basket";
+import Error404 from "./pages/Error404";
 function App() {
   return (
     <Router>
@@ -32,6 +33,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/basket" element={<Basket />} />
             </Route>
+            <Route path="/*" element={<Error404 />} />
           </Routes>
         </div>
       </div>
