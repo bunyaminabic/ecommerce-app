@@ -6,11 +6,15 @@ import { Alert, Box, Button, Image, Text } from "@chakra-ui/react";
 function Basket() {
   const { items, removeFromBasket } = useBasket();
   const total = items.reduce((acc, obj) => acc + obj.price, 0);
-  console.log(items);
+
+  const handleRemoveFromBasket = (productId) => {
+    removeFromBasket(productId);
+  };
+
   return (
     <Box p="5">
       {items.length < 1 && (
-        <Alert status="waning">You have not any items in your basket.</Alert>
+        <Alert status="warning">You have not any items in your basket.</Alert>
       )}
 
       {items.length > 0 && (
@@ -26,7 +30,7 @@ function Basket() {
                   mt="2"
                   size="sm"
                   colorScheme="pink"
-                  onClick={() => removeFromBasket(item.id)}
+                  onClick={() => handleRemoveFromBasket(item.id)}
                 >
                   Remove from basket
                 </Button>

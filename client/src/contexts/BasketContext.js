@@ -15,8 +15,10 @@ const BasketProvider = ({ children }) => {
     setItems(filtered);
   };
 
-  const removeFromBasket = (itemId) => {
-    const filtered = items.filter((item) => item.id.toString() !== itemId);
+  const removeFromBasket = (productId) => {
+    const filtered = items.filter(
+      (item) => item.id.toString() !== productId.toString()
+    );
     setItems(filtered);
   };
 
