@@ -19,11 +19,13 @@ function Basket() {
 
       {items.length > 0 && (
         <>
-          <ul>
+          <ul style={{ listStyleType: "decimal" }}>
             {items.map((item) => (
               <li key={item.id} style={{ marginBottom: 15 }}>
                 <Link to={`/product/${item.id}`}>
-                  {item.title}-{item.price} TL
+                  <Text fontSize="18">
+                    {item.title}-{item.price} TL
+                  </Text>
                   <Image htmlWidth={200} src={item.image} alt="basket item" />
                 </Link>
                 <Button

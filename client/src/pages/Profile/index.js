@@ -1,14 +1,18 @@
 import { useAuth } from "../../contexts/AuthContext";
-import { signOut } from "firebase/auth";
 import { useCallback } from "react";
-import { auth } from "../../firebase";
 import { Text, Button } from "@chakra-ui/react";
 
 function Profile() {
-  const handleSignOut = useCallback(() => {
-    signOut(auth);
-  }, []);
-  const { user } = useAuth();
+  const { logout, user } = useAuth();
+
+  const handleSignOut = useCallback(async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Çıkış yapılırken bir hata oluştu:", error);
+    }
+  }, [logout]);
+
   return (
     <div>
       <Text fontSize="22">Profile</Text>
