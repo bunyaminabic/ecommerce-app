@@ -26,7 +26,12 @@ function Basket() {
                   <Text fontSize="18">
                     {item.title}-{item.price} TL
                   </Text>
-                  <Image htmlWidth={200} src={item.image} alt="basket item" />
+                  <Image
+                    htmlWidth={200}
+                    loading="lazy"
+                    src={item.image}
+                    alt="basket item"
+                  />
                 </Link>
                 <Button
                   mt="2"
